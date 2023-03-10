@@ -1,4 +1,4 @@
-//·ÖÊı¼ÆËãÆ÷µÄÉè¼ÆÓëÊµÏÖ
+//åˆ†æ•°è®¡ç®—å™¨çš„è®¾è®¡ä¸å®ç°
 #include <iostream>
 #include <string.h>
 #include <vector>
@@ -6,43 +6,43 @@
 #include <algorithm>
 using namespace std;
 
-//ÏÂÃæÊÇÀàµÄÊµÏÖ
+//ä¸‹é¢æ˜¯ç±»çš„å®ç°
 class Fraction
 {
-    friend Fraction operator+(const Fraction &frac1, const Fraction &frac2); //ÖØÔØ+ÔËËã·û
-    friend Fraction operator-(const Fraction &frac1, const Fraction &frac2); //ÖØÔØ-ÔËËã·û
-    friend Fraction operator*(const Fraction &frac1, const Fraction &frac2); //ÖØÔØ*ÔËËã·û
-    friend Fraction operator/(const Fraction &frac1, const Fraction &frac2); //ÖØÔØ/ÔËËã·û
-    friend bool operator==(Fraction frac1, Fraction frac2);                  //ÖØÔØ==ÔËËã·û
-    friend bool operator>(const Fraction &frac1, const Fraction &frac2);     //ÖØÔØ>ÔËËã·û
-    friend bool operator<(const Fraction &frac1, const Fraction &frac2);     //ÖØÔØ<ÔËËã·û
-    friend ostream &operator<<(ostream &out, const Fraction &frac);          //ÖØÔØ<<ÔËËã·û
-    friend istream &operator>>(istream &in, Fraction &frac);                 //ÖØÔØ>>ÔËËã·û
-    friend void sortFraction();                                              //¶Ô·ÖÊıÊı×éÅÅĞò
+    friend Fraction operator+(const Fraction &frac1, const Fraction &frac2); //é‡è½½+è¿ç®—ç¬¦
+    friend Fraction operator-(const Fraction &frac1, const Fraction &frac2); //é‡è½½-è¿ç®—ç¬¦
+    friend Fraction operator*(const Fraction &frac1, const Fraction &frac2); //é‡è½½*è¿ç®—ç¬¦
+    friend Fraction operator/(const Fraction &frac1, const Fraction &frac2); //é‡è½½/è¿ç®—ç¬¦
+    friend bool operator==(Fraction frac1, Fraction frac2);                  //é‡è½½==è¿ç®—ç¬¦
+    friend bool operator>(const Fraction &frac1, const Fraction &frac2);     //é‡è½½>è¿ç®—ç¬¦
+    friend bool operator<(const Fraction &frac1, const Fraction &frac2);     //é‡è½½<è¿ç®—ç¬¦
+    friend ostream &operator<<(ostream &out, const Fraction &frac);          //é‡è½½<<è¿ç®—ç¬¦
+    friend istream &operator>>(istream &in, Fraction &frac);                 //é‡è½½>>è¿ç®—ç¬¦
+    friend void sortFraction();                                              //å¯¹åˆ†æ•°æ•°ç»„æ’åº
 
-    //ÏÂÃæÊÇÎªÁË¼ò»¯´úÂëĞÂ¶¨ÒåµÄÍ¨·Öº¯Êı£¬·µ»ØÍ¨·ÖËùĞè³ËÒÔµÄÒòÊıfactor
-    friend int reduction(Fraction frac1, Fraction frac2); //¶ÔÁ½¸ö·ÖÊı½øĞĞÍ¨·Ö
+    //ä¸‹é¢æ˜¯ä¸ºäº†ç®€åŒ–ä»£ç æ–°å®šä¹‰çš„é€šåˆ†å‡½æ•°ï¼Œè¿”å›é€šåˆ†æ‰€éœ€ä¹˜ä»¥çš„å› æ•°factor
+    friend int reduction(Fraction frac1, Fraction frac2); //å¯¹ä¸¤ä¸ªåˆ†æ•°è¿›è¡Œé€šåˆ†
 
 public:
-    Fraction();                     //ÎŞ²ÎÔìº¯Êı
-    Fraction(int n, int d);         //´ø²ÎÔìº¯Êı
-    Fraction(const Fraction &f);    //¸´ÖÆÔìº¯Êı
-    void setFraction(int n, int d); //ÉèÖÃ·ÖÊıµÄ·Ö×ÓºÍ·ÖÄ¸
-    int getNumer();                 //»ñÈ¡·ÖÊıµÄ·Ö×Ó
-    int getDeno();                  //»ñÈ¡·ÖÊıµÄ·ÖÄ¸
-    void RdcFrc();                  //µ±Ç°·ÖÊıÔ¼·Ö
+    Fraction();                     //æ— å‚é€ å‡½æ•°
+    Fraction(int n, int d);         //å¸¦å‚é€ å‡½æ•°
+    Fraction(const Fraction &f);    //å¤åˆ¶é€ å‡½æ•°
+    void setFraction(int n, int d); //è®¾ç½®åˆ†æ•°çš„åˆ†å­å’Œåˆ†æ¯
+    int getNumer();                 //è·å–åˆ†æ•°çš„åˆ†å­
+    int getDeno();                  //è·å–åˆ†æ•°çš„åˆ†æ¯
+    void RdcFrc();                  //å½“å‰åˆ†æ•°çº¦åˆ†
 
-    //ÒÔÏÂÎªĞÂÔöÄÚÈİ
-    string Operator; //±£´æµ±Ç°·ÖÊıÇ°µÄ¼ÆËã·û
+    //ä»¥ä¸‹ä¸ºæ–°å¢å†…å®¹
+    string Operator; //ä¿å­˜å½“å‰åˆ†æ•°å‰çš„è®¡ç®—ç¬¦
     Fraction(int n, int d, string Operator);
-    //´øÔËËã·ûµÄ¹¹Ôìº¯Êı
+    //å¸¦è¿ç®—ç¬¦çš„æ„é€ å‡½æ•°
 
 private:
-    int numer; //·Ö×Ó
-    int deno;  //·ÖÄ¸
+    int numer; //åˆ†å­
+    int deno;  //åˆ†æ¯
 };
 
-//ÏÂÃæÊÇÓÃµ½µÄËã·¨º¯Êı
+//ä¸‹é¢æ˜¯ç”¨åˆ°çš„ç®—æ³•å‡½æ•°
 int Max(int a, int b)
 {
     if (a > b)
@@ -57,9 +57,9 @@ int Min(int a, int b)
     return b;
 }
 
-int reduction(Fraction frac1, Fraction frac2) //ÊµÏÖÍ¨·Öº¯Êı,·µ»ØµÄÊÇ×îĞ¡¹«±¶Êı
+int reduction(Fraction frac1, Fraction frac2) //å®ç°é€šåˆ†å‡½æ•°,è¿”å›çš„æ˜¯æœ€å°å…¬å€æ•°
 {
-    //ÏÂÃæÇó×îĞ¡¹«±¶Êı
+    //ä¸‹é¢æ±‚æœ€å°å…¬å€æ•°
     int max = Max(frac1.deno, frac2.deno);
     int min = Min(frac1.deno, frac2.deno);
     int j = 2;
@@ -67,9 +67,9 @@ int reduction(Fraction frac1, Fraction frac2) //ÊµÏÖÍ¨·Öº¯Êı,·µ»ØµÄÊÇ×îĞ¡¹«±¶Êı
     if (frac1.deno == frac2.deno)
         return frac1.deno;
 
-    for (int i = 1; 1; i++) //¶Ô´óµÄ·ÖÄ¸½øĞĞ³Ë·¨
+    for (int i = 1; 1; i++) //å¯¹å¤§çš„åˆ†æ¯è¿›è¡Œä¹˜æ³•
     {
-        while (j * min <= max * i) //¶ÔĞ¡µÄ·ÖÄ¸½øĞĞ³Ë·¨
+        while (j * min <= max * i) //å¯¹å°çš„åˆ†æ¯è¿›è¡Œä¹˜æ³•
         {
             if (j * min == max * i)
             {
@@ -81,34 +81,34 @@ int reduction(Fraction frac1, Fraction frac2) //ÊµÏÖÍ¨·Öº¯Êı,·µ»ØµÄÊÇ×îĞ¡¹«±¶Êı
     }
 }
 
-//ÒÔÏÂÊÇ¸÷º¯ÊıÊµÏÖ
-Fraction::Fraction() //ÊµÏÖÄ¬ÈÏ¹¹Ôìº¯Êı
+//ä»¥ä¸‹æ˜¯å„å‡½æ•°å®ç°
+Fraction::Fraction() //å®ç°é»˜è®¤æ„é€ å‡½æ•°
 {
     this->numer = 0;
     this->deno = 1;
 }
 
-Fraction::Fraction(int n, int d) //ÊµÏÖ¹¹Ôìº¯Êı
+Fraction::Fraction(int n, int d) //å®ç°æ„é€ å‡½æ•°
 {
     this->numer = n;
     this->deno = d;
 }
 
-Fraction::Fraction(const Fraction &f) //ÊµÏÖ¸´ÖÆÔìº¯Êı
+Fraction::Fraction(const Fraction &f) //å®ç°å¤åˆ¶é€ å‡½æ•°
 {
     this->deno = f.deno;
     this->numer = f.numer;
     this->Operator = f.Operator;
 }
 
-Fraction::Fraction(int n, int d, string Operator) //ÊµÏÖ´øÔËËã·ûµÄ¹¹Ôìº¯Êı
+Fraction::Fraction(int n, int d, string Operator) //å®ç°å¸¦è¿ç®—ç¬¦çš„æ„é€ å‡½æ•°
 {
     this->deno = d;
     this->numer = n;
     this->Operator = Operator;
 }
 
-void Fraction::setFraction(int n, int d) //ÉèÖÃ·ÖÊıµÄ·Ö×ÓºÍ·ÖÄ¸
+void Fraction::setFraction(int n, int d) //è®¾ç½®åˆ†æ•°çš„åˆ†å­å’Œåˆ†æ¯
 {
     this->deno = d;
     this->numer = n;
@@ -124,9 +124,9 @@ int Fraction::getDeno()
     return this->deno;
 }
 
-void Fraction::RdcFrc() //µ±Ç°·ÖÊıÔ¼·Ö
+void Fraction::RdcFrc() //å½“å‰åˆ†æ•°çº¦åˆ†
 {
-    if (this->numer == this->deno) //·Ö×Ó·ÖÄ¸ÏàµÈ£¬Êä³ö1
+    if (this->numer == this->deno) //åˆ†å­åˆ†æ¯ç›¸ç­‰ï¼Œè¾“å‡º1
     {
         this->numer = 1;
         this->deno = 1;
@@ -142,7 +142,7 @@ void Fraction::RdcFrc() //µ±Ç°·ÖÊıÔ¼·Ö
     }
 }
 
-Fraction operator+(const Fraction &frac1, const Fraction &frac2) //ÖØÔØ+ÔËËã·û
+Fraction operator+(const Fraction &frac1, const Fraction &frac2) //é‡è½½+è¿ç®—ç¬¦
 {
     Fraction A(1, 1);
 
@@ -162,7 +162,7 @@ Fraction operator+(const Fraction &frac1, const Fraction &frac2) //ÖØÔØ+ÔËËã·û
     return A;
 }
 
-Fraction operator-(const Fraction &frac1, const Fraction &frac2) //ÖØÔØ-ÔËËã·û
+Fraction operator-(const Fraction &frac1, const Fraction &frac2) //é‡è½½-è¿ç®—ç¬¦
 {
     Fraction A(1, 1);
     if (frac1.deno == frac2.deno)
@@ -176,7 +176,7 @@ Fraction operator-(const Fraction &frac1, const Fraction &frac2) //ÖØÔØ-ÔËËã·û
     return A;
 }
 
-Fraction operator*(const Fraction &frac1, const Fraction &frac2) //ÖØÔØ*ÔËËã·û
+Fraction operator*(const Fraction &frac1, const Fraction &frac2) //é‡è½½*è¿ç®—ç¬¦
 {
     Fraction A(1, 1);
     A.deno = frac1.deno * frac2.deno;
@@ -184,7 +184,7 @@ Fraction operator*(const Fraction &frac1, const Fraction &frac2) //ÖØÔØ*ÔËËã·û
     return A;
 }
 
-Fraction operator/(const Fraction &frac1, const Fraction &frac2) //ÖØÔØ/ÔËËã·û
+Fraction operator/(const Fraction &frac1, const Fraction &frac2) //é‡è½½/è¿ç®—ç¬¦
 {
     Fraction A(1, 1);
     A.deno = frac1.deno * frac2.numer;
@@ -192,12 +192,12 @@ Fraction operator/(const Fraction &frac1, const Fraction &frac2) //ÖØÔØ/ÔËËã·û
     return A;
 }
 
-bool operator==(Fraction frac1, Fraction frac2) //ÖØÔØ==ÔËËã·û
+bool operator==(Fraction frac1, Fraction frac2) //é‡è½½==è¿ç®—ç¬¦
 {
     int min_d = Min(frac1.deno, frac2.deno);
     int max_d = Max(frac1.deno, frac2.deno);
     int min_n = Max(frac1.numer, frac2.numer);
-    int max_n = Min(frac1.numer, frac2.numer); //¶¨Òå·Ö×ÓºÍ·ÖÄ¸µÄ×î´ó¡¢×îĞ¡Öµ
+    int max_n = Min(frac1.numer, frac2.numer); //å®šä¹‰åˆ†å­å’Œåˆ†æ¯çš„æœ€å¤§ã€æœ€å°å€¼
 
     for (int i = 1; min_d * i <= max_d; i++)
     {
@@ -207,29 +207,29 @@ bool operator==(Fraction frac1, Fraction frac2) //ÖØÔØ==ÔËËã·û
     return false;
 }
 
-bool operator>(const Fraction &frac1, const Fraction &frac2) //ÖØÔØ>ÔËËã·û
+bool operator>(const Fraction &frac1, const Fraction &frac2) //é‡è½½>è¿ç®—ç¬¦
 {
-    int lcm = reduction(frac1, frac2); // least common multiple   ×îĞ¡¹«±¶Êı
+    int lcm = reduction(frac1, frac2); // least common multiple   æœ€å°å…¬å€æ•°
     return frac1.numer * (lcm / frac1.deno) > frac2.numer * (lcm / frac2.deno);
 }
 
-bool operator<(const Fraction &frac1, const Fraction &frac2) //ÖØÔØ<ÔËËã·û
+bool operator<(const Fraction &frac1, const Fraction &frac2) //é‡è½½<è¿ç®—ç¬¦
 {
-    //´Ë´¦²»ÖªµÀÎªºÎ£¬ÀıÈça<b£¬Êµ¼ÊÉÏ´«ÈëµÄµÚÒ»¸ö²ÎÊıÊÇb,µÚ¶ş¸ö²ÎÊıÊÇa£¬¶şÕßµßµ¹ÁË£¿£¡
-    //¾­²éÑ¯£¬Õâ¾ÍÊÇÓï·¨¹æ¶¨...
+    //æ­¤å¤„ä¸çŸ¥é“ä¸ºä½•ï¼Œä¾‹å¦‚a<bï¼Œå®é™…ä¸Šä¼ å…¥çš„ç¬¬ä¸€ä¸ªå‚æ•°æ˜¯b,ç¬¬äºŒä¸ªå‚æ•°æ˜¯aï¼ŒäºŒè€…é¢ å€’äº†ï¼Ÿï¼
+    //ç»æŸ¥è¯¢ï¼Œè¿™å°±æ˜¯è¯­æ³•è§„å®š...
 
     double fra1 = (double)frac1.numer / frac1.deno;
     double fra2 = (double)frac2.numer / frac2.deno;
     return fra1 < fra2;
 }
 
-ostream &operator<<(ostream &out, const Fraction &frac) //ÖØÔØ<<ÔËËã·û
+ostream &operator<<(ostream &out, const Fraction &frac) //é‡è½½<<è¿ç®—ç¬¦
 {
     out << frac.numer << '/' << frac.deno;
     return out;
 }
 
-istream &operator>>(istream &in, Fraction &frac) //ÖØÔØ>>ÔËËã·û
+istream &operator>>(istream &in, Fraction &frac) //é‡è½½>>è¿ç®—ç¬¦
 {
     char s[100];
     in >> s;
@@ -238,17 +238,17 @@ istream &operator>>(istream &in, Fraction &frac) //ÖØÔØ>>ÔËËã·û
     return in;
 }
 
-void sortFraction(vector<Fraction> &fraction, bool judge) //¶Ô·ÖÊıÊı×éÅÅĞò
-//±ØĞë´«µØÖ·£¬·ñÔòÒªĞŞ¸ÄµÄÎŞ·¨·µ»Ø£¡
+void sortFraction(vector<Fraction> &fraction, bool judge) //å¯¹åˆ†æ•°æ•°ç»„æ’åº
+//å¿…é¡»ä¼ åœ°å€ï¼Œå¦åˆ™è¦ä¿®æ”¹çš„æ— æ³•è¿”å›ï¼
 {
-    if (judge) //µ±aÎªtrueÊ±£¬´ÓĞ¡µ½´óÅÅÁĞ
+    if (judge) //å½“aä¸ºtrueæ—¶ï¼Œä»å°åˆ°å¤§æ’åˆ—
     {
 
         sort(fraction.begin(), fraction.end(), [](Fraction &frac1, Fraction &frac2)
              { return frac1 < frac2; });
     }
 
-    else //µ±aÎªfalseÊ±£¬´Ó´óµ½Ğ¡ÅÅÁĞ
+    else //å½“aä¸ºfalseæ—¶ï¼Œä»å¤§åˆ°å°æ’åˆ—
     {
         sort(fraction.begin(), fraction.end(), [](Fraction &frac1, Fraction &frac2)
              { return frac1 > frac2; });
@@ -259,81 +259,81 @@ int main()
 {
     cout<<"Created by WJZ \n";
     string choice;
-    regex pattern("^([+\\-*/]?((((?!0)-?\\d+)|0)\\/((?!0)-?\\d+)))+$"); //ÓÃÓÚ¼ì²âµÄÕıÔò
-    regex pattern1("([+\\-*/])?((((?!0)-?\\d+)|0)/((?!0)-?\\d+))");     //ÓÃÓÚËãÊıµÄÕıÔò
-    regex r1("^([+\\-]?[0-9]+/((?!0)[0-9]+|0),?[<=+*/>]?)+$");          //ÓÃÓÚÅÅĞòµÄÕıÔò
-    regex r2("^(((?!0)[0-9]+)|0)\\/((?!0)[0-9]+)$");                    //ÓÃÓÚÍ¨·ÖºÍÔ¼·ÖµÄÕıÔò
-    //ÀûÓÃ½ÏÎª¸´ÔÓµÄÕıÔò±í´ïÊ½ÅĞ¶ÏÓÃ»§ÊäÈëÊÇ·ñ·ûºÏ¸ñÊ½
+    regex pattern("^([+\\-*/]?((((?!0)-?\\d+)|0)\\/((?!0)-?\\d+)))+$"); //ç”¨äºæ£€æµ‹çš„æ­£åˆ™
+    regex pattern1("([+\\-*/])?((((?!0)-?\\d+)|0)/((?!0)-?\\d+))");     //ç”¨äºç®—æ•°çš„æ­£åˆ™
+    regex r1("^([+\\-]?[0-9]+/((?!0)[0-9]+|0),?[<=+*/>]?)+$");          //ç”¨äºæ’åºçš„æ­£åˆ™
+    regex r2("^(((?!0)[0-9]+)|0)\\/((?!0)[0-9]+)$");                    //ç”¨äºé€šåˆ†å’Œçº¦åˆ†çš„æ­£åˆ™
+    //åˆ©ç”¨è¾ƒä¸ºå¤æ‚çš„æ­£åˆ™è¡¨è¾¾å¼åˆ¤æ–­ç”¨æˆ·è¾“å…¥æ˜¯å¦ç¬¦åˆæ ¼å¼
     while (1)
     {
-        int judge = 0; //ÓÃÓÚ¼ì²âÊÇ·ñÊäÈë´íÎó
+        int judge = 0; //ç”¨äºæ£€æµ‹æ˜¯å¦è¾“å…¥é”™è¯¯
 
-        printf("ÇëÑ¡Ôñ¹¦ÄÜ£¨¼üÈë1¡¢2¡¢3£©:\n1.·ÖÊı¼ÆËã\n2.·ÖÊıÅÅĞò\n3.·ÖÊıÔ¼·Ö\n¡ª¡ª");
-        cin >> choice; //³õÊ¼½çÃæ
+        printf("è¯·é€‰æ‹©åŠŸèƒ½ï¼ˆé”®å…¥1ã€2ã€3ï¼‰:\n1.åˆ†æ•°è®¡ç®—\n2.åˆ†æ•°æ’åº\n3.åˆ†æ•°çº¦åˆ†\nâ€”â€”");
+        cin >> choice; //åˆå§‹ç•Œé¢
 
-        if (choice == "1") //·ÖÊ½¼ÆËã
+        if (choice == "1") //åˆ†å¼è®¡ç®—
             while (1)
             {
-                judge = 1; //µ±judge´óÓÚ5Ê±¾ÍÊÇÊäÈë´íÎó£¬·µ»ØÉÏÒ»²ãÄ¿Â¼
-                printf("ÇëÊäÈë·ÖÊı¼ÆËãÊ½£¨Èç1/2+1/3»Ø³µ£©£¬ÊäÈë#ºÅ¼ü·µ»ØÉÏÒ»²ãÄ¿Â¼");
-                printf("£¨³ı·¨¼ÆËãÇëÓÃ¡°/¡±£©:\n¡ª¡ª");
+                judge = 1; //å½“judgeå¤§äº5æ—¶å°±æ˜¯è¾“å…¥é”™è¯¯ï¼Œè¿”å›ä¸Šä¸€å±‚ç›®å½•
+                printf("è¯·è¾“å…¥åˆ†æ•°è®¡ç®—å¼ï¼ˆå¦‚1/2+1/3å›è½¦ï¼‰ï¼Œè¾“å…¥#å·é”®è¿”å›ä¸Šä¸€å±‚ç›®å½•");
+                printf("ï¼ˆé™¤æ³•è®¡ç®—è¯·ç”¨â€œ/â€ï¼‰:\nâ€”â€”");
 
-                string calculation; //¼ÆËãÊ½
-                cin >> calculation; //ÊäÈë¼ÆËãÊ½
+                string calculation; //è®¡ç®—å¼
+                cin >> calculation; //è¾“å…¥è®¡ç®—å¼
 
                 if (calculation[0] == '#')
-                    break; //ÊäÈë££·µ»ØÉÏ²ãÄ¿Â¼
+                    break; //è¾“å…¥ï¼ƒè¿”å›ä¸Šå±‚ç›®å½•
 
                 if (!regex_match(calculation, pattern))
                 {
-                    cout << "·ÖÊıËãÊ½ÊäÈë´íÎó£¡" << endl;
+                    cout << "åˆ†æ•°ç®—å¼è¾“å…¥é”™è¯¯ï¼" << endl;
                     continue;
                 }
 
-                //ÏÂÃæÀûÓÃregexÄÚµÄsearch½øĞĞËãÊ½µÄÌáÈ¡
+                //ä¸‹é¢åˆ©ç”¨regexå†…çš„searchè¿›è¡Œç®—å¼çš„æå–
                 vector<Fraction> fraction;
                 smatch result;
                 while (regex_search(calculation, result, pattern1))
                 {
                     fraction.push_back(Fraction(stoi(result[3]), stoi(result[5]), result[1]));
-                    //Ìí¼Óµ½Êı×éÒÔ·½±ãÔËËã
-                    //´ÓµÚ¶ş¸ö¿ªÊ¼ÒÀ´ÎÊÇ·ûºÅ¡¢·Ö×Ó¡¢·ÖÄ¸
-                    calculation = result.suffix(); //ÈÃcalculation±ä³ÉÊ£ÓàµÄ×Ö·û¼ÌĞøÇĞ¸î
+                    //æ·»åŠ åˆ°æ•°ç»„ä»¥æ–¹ä¾¿è¿ç®—
+                    //ä»ç¬¬äºŒä¸ªå¼€å§‹ä¾æ¬¡æ˜¯ç¬¦å·ã€åˆ†å­ã€åˆ†æ¯
+                    calculation = result.suffix(); //è®©calculationå˜æˆå‰©ä½™çš„å­—ç¬¦ç»§ç»­åˆ‡å‰²
                 }
 
-                //ÏÂÃæ½øĞĞ³Ë³ı·¨µÄÓÅÏÈÔËËã¡£
-                vector<Fraction>::iterator it = fraction.begin(); //¶¨Òåµü´úÆ÷
+                //ä¸‹é¢è¿›è¡Œä¹˜é™¤æ³•çš„ä¼˜å…ˆè¿ç®—ã€‚
+                vector<Fraction>::iterator it = fraction.begin(); //å®šä¹‰è¿­ä»£å™¨
                 for (int i = 0; i < fraction.size(); i++)
                 {
                     if (fraction[i].Operator == "*")
                     {
-                        fraction[i] = fraction[i] * fraction[i - 1];     //½øĞĞ³Ë·¨ÔËËã£¬µÚ¶ş¸öÒò×Ó±äÎª½á¹û
-                        fraction[i].Operator = fraction[i - 1].Operator; //±ä¸üÔËËã·û
-                        fraction.erase(it + i - 1);                      //È¥³ı³Ë·¨µÄµÚÒ»¸öÒò×Ó
+                        fraction[i] = fraction[i] * fraction[i - 1];     //è¿›è¡Œä¹˜æ³•è¿ç®—ï¼Œç¬¬äºŒä¸ªå› å­å˜ä¸ºç»“æœ
+                        fraction[i].Operator = fraction[i - 1].Operator; //å˜æ›´è¿ç®—ç¬¦
+                        fraction.erase(it + i - 1);                      //å»é™¤ä¹˜æ³•çš„ç¬¬ä¸€ä¸ªå› å­
                         i--;
                     }
 
                     else if (fraction[i].Operator == "/")
                     {
-                        fraction[i] = fraction[i - 1] / fraction[i];     //½øĞĞ³Ë·¨ÔËËã£¬µÚ¶ş¸öÒò×Ó±äÎª½á¹û
-                        fraction[i].Operator = fraction[i - 1].Operator; //±ä¸üÔËËã·û
-                        fraction.erase(it + i - 1);                      //È¥³ı³Ë·¨µÄµÚÒ»¸öÒò×Ó
+                        fraction[i] = fraction[i - 1] / fraction[i];     //è¿›è¡Œä¹˜æ³•è¿ç®—ï¼Œç¬¬äºŒä¸ªå› å­å˜ä¸ºç»“æœ
+                        fraction[i].Operator = fraction[i - 1].Operator; //å˜æ›´è¿ç®—ç¬¦
+                        fraction.erase(it + i - 1);                      //å»é™¤ä¹˜æ³•çš„ç¬¬ä¸€ä¸ªå› å­
                         i--;
                     }
                 }
 
-                //ÏÂÃæ·½·¨ÔÚ³Ë³ı·¨¼ÆËãÍê±ÏºóÔÙÖ´ĞĞ£¡
-                for (int i = 0; i < fraction.size(); i++) //½«ÔËËã·ûÎª¼õ·¨µÄ·Ö×ÓÈ¡³É¸ºÊı£¬ÒÔ±ã×îºóµÄ¼Ó¼õ
+                //ä¸‹é¢æ–¹æ³•åœ¨ä¹˜é™¤æ³•è®¡ç®—å®Œæ¯•åå†æ‰§è¡Œï¼
+                for (int i = 0; i < fraction.size(); i++) //å°†è¿ç®—ç¬¦ä¸ºå‡æ³•çš„åˆ†å­å–æˆè´Ÿæ•°ï¼Œä»¥ä¾¿æœ€åçš„åŠ å‡
                 {
                     if (fraction[i].Operator == "-")
-                    //Òò·ÖÊ½ÀàÖĞµÄ·Ö×ÓÓë·ÖÄ¸¾ùÎªË½ÓĞ³ÉÔ±£¬ÎŞ·¨Ö±½Ó·ÃÎÊ£¬Ö»ÄÜ²ÉÈ¡ÆäËû·½Ê½È¡¸ºÊı
+                    //å› åˆ†å¼ç±»ä¸­çš„åˆ†å­ä¸åˆ†æ¯å‡ä¸ºç§æœ‰æˆå‘˜ï¼Œæ— æ³•ç›´æ¥è®¿é—®ï¼Œåªèƒ½é‡‡å–å…¶ä»–æ–¹å¼å–è´Ÿæ•°
                     {
                         Fraction A(0, 1);
                         fraction[i] = A - fraction[i];
                     }
                 }
 
-                //×îºóµÄÇóºÍ¹¤×÷£¡
+                //æœ€åçš„æ±‚å’Œå·¥ä½œï¼
                 Fraction Result(0, 1);
                 for (Fraction i : fraction)
                     Result = Result + i;
@@ -342,31 +342,31 @@ int main()
                 cout << "=" << Result << endl;
             }
 
-        if (choice == "2") //½øĞĞ·ÖÊ½µÄÅÅĞò¹¤×÷
+        if (choice == "2") //è¿›è¡Œåˆ†å¼çš„æ’åºå·¥ä½œ
             while (1)
             {
-                judge = 1; //µ±judgeÎª0²»±äÊ±¾ÍÊÇÊäÈë´íÎó£¬·µ»ØÉÏÒ»²ãÄ¿Â¼
-                printf("ÇëÊäÈëÒ»×é·ÖÊı£¬ÓÃ¶ººÅ¸ô¿ª£¬ÈçĞèÓÉĞ¡µ½´óÅÅĞòÓÃ·ûºÅ<½áÎ²£¬\n");
-                printf("ÓÉ´óµ½Ğ¡ÅÅĞòÓÃ·ûºÅ>½áÎ²£¨Èç1/2,1/4,3/5<»Ø³µ£©,ÊäÈë#ºÅ¼ü·µ»ØÉÏÒ»²ãÄ¿Â¼");
-                printf(":\n¡ª¡ª");
+                judge = 1; //å½“judgeä¸º0ä¸å˜æ—¶å°±æ˜¯è¾“å…¥é”™è¯¯ï¼Œè¿”å›ä¸Šä¸€å±‚ç›®å½•
+                printf("è¯·è¾“å…¥ä¸€ç»„åˆ†æ•°ï¼Œç”¨é€—å·éš”å¼€ï¼Œå¦‚éœ€ç”±å°åˆ°å¤§æ’åºç”¨ç¬¦å·<ç»“å°¾ï¼Œ\n");
+                printf("ç”±å¤§åˆ°å°æ’åºç”¨ç¬¦å·>ç»“å°¾ï¼ˆå¦‚1/2,1/4,3/5<å›è½¦ï¼‰,è¾“å…¥#å·é”®è¿”å›ä¸Šä¸€å±‚ç›®å½•");
+                printf(":\nâ€”â€”");
 
                 char equation[200];
-                cin >> equation; //ÊäÈëÅÅĞòÊ½
+                cin >> equation; //è¾“å…¥æ’åºå¼
 
                 if (equation[0] == '#')
-                    break; //ÊäÈë££·µ»ØÉÏ²ãÄ¿Â¼
+                    break; //è¾“å…¥ï¼ƒè¿”å›ä¸Šå±‚ç›®å½•
 
-                if (!regex_match((string)equation, r1)) //¼ìÑé·ÖÊıÊ½ÊÇ·ñ·ûºÏ¹æÔò
+                if (!regex_match((string)equation, r1)) //æ£€éªŒåˆ†æ•°å¼æ˜¯å¦ç¬¦åˆè§„åˆ™
                 {
-                    cout << "·ÖÊıËãÊ½ÊäÈë´íÎó£¡" << endl;
+                    cout << "åˆ†æ•°ç®—å¼è¾“å…¥é”™è¯¯ï¼" << endl;
                     break;
                 }
 
-                //ÏÂÃæ½øĞĞÔËËã
-                vector<Fraction> fraction; //ÓÃÓÚ±£´æ·ÖÊ½
-                string fra[50];            //´æ´¢ÇĞ·ÖµÄ×Ö·û´®
+                //ä¸‹é¢è¿›è¡Œè¿ç®—
+                vector<Fraction> fraction; //ç”¨äºä¿å­˜åˆ†å¼
+                string fra[50];            //å­˜å‚¨åˆ‡åˆ†çš„å­—ç¬¦ä¸²
                 char *token;
-                token = strtok(equation, ","); //»ñÈ¡µÚÒ»¸ö·ÖÊ½
+                token = strtok(equation, ","); //è·å–ç¬¬ä¸€ä¸ªåˆ†å¼
                 fra[0] = token;
 
                 for (int i = 1; token != NULL; i++)
@@ -375,12 +375,12 @@ int main()
                     if (token != NULL)
                         fra[i] = token;
                 }
-                //Íê³É¶Ô·ÖÊ½µÄÇĞ·Ö£¬¸÷·ÖÊ½´æ´¢ÔÚstringÊı×éfraÄÚ
+                //å®Œæˆå¯¹åˆ†å¼çš„åˆ‡åˆ†ï¼Œå„åˆ†å¼å­˜å‚¨åœ¨stringæ•°ç»„fraå†…
 
-                //ÏÂÃæ¶ÔÊı¾İ½øĞĞÅÅĞò
+                //ä¸‹é¢å¯¹æ•°æ®è¿›è¡Œæ’åº
                 int j = -1;
                 for (int i = 0; fra[i].size() > 0; i++, j++)
-                    ; //È·ÈÏ×îºóÒ»¸ö·ÖÊ½µÄÏÂ±êÎªj
+                    ; //ç¡®è®¤æœ€åä¸€ä¸ªåˆ†å¼çš„ä¸‹æ ‡ä¸ºj
 
                 bool judge1;
 
@@ -391,75 +391,75 @@ int main()
                     judge1 = false;
 
                 else
-                    cout << "·ÖÊıËãÊ½ÅÅÁĞÀàĞÍÊäÈë´íÎó£¡ÇëÔÚ×îºóÊäÈë<ºÅ»ò>ºÅ£¡\n";
+                    cout << "åˆ†æ•°ç®—å¼æ’åˆ—ç±»å‹è¾“å…¥é”™è¯¯ï¼è¯·åœ¨æœ€åè¾“å…¥<å·æˆ–>å·ï¼\n";
 
-                //ÏÂÃæ¶Ô×îºóÒ»¸öfra½øĞĞ´¦Àí£¬È¥µô´óÓÚºÅÓëĞ¡ÓÚºÅ
+                //ä¸‹é¢å¯¹æœ€åä¸€ä¸ªfraè¿›è¡Œå¤„ç†ï¼Œå»æ‰å¤§äºå·ä¸å°äºå·
                 string copy1;
                 int i1 = 0;
                 for (; i1 < fra[j].size() - 1; i1++)
-                    copy1 += fra[j][i1]; //¸´ÖÆÒ»¸öcopy1£¬ÄÚÈİÉ¾È¥ÁËÄ©Î²µÄ´óÓÚ»òĞ¡ÓÚºÅ
+                    copy1 += fra[j][i1]; //å¤åˆ¶ä¸€ä¸ªcopy1ï¼Œå†…å®¹åˆ å»äº†æœ«å°¾çš„å¤§äºæˆ–å°äºå·
 
-                fra[j] = copy1; //É¾È¥Êı×é×îºóµÄ´óÓÚºÅºÍĞ¡ÓÚºÅ
+                fra[j] = copy1; //åˆ å»æ•°ç»„æœ€åçš„å¤§äºå·å’Œå°äºå·
 
                 for (int i = 0; i < j + 1; i++)
                 {
-                    //´Ë´¦ĞèÒª×¢Òâ£¬×îºóÒ»¸öfraÔªËØµÄÄ©Î²·ûºÅÎª<»òÕß>
+                    //æ­¤å¤„éœ€è¦æ³¨æ„ï¼Œæœ€åä¸€ä¸ªfraå…ƒç´ çš„æœ«å°¾ç¬¦å·ä¸º<æˆ–è€…>
                     char *equ = (char *)fra[i].c_str();
 
-                    token = strtok(equ, "/"); //ÌáÈ¡·Ö×Ó
-                    int numer0 = atoi(token); //´¢´æ·Ö×Ó
+                    token = strtok(equ, "/"); //æå–åˆ†å­
+                    int numer0 = atoi(token); //å‚¨å­˜åˆ†å­
 
-                    token = strtok(NULL, "/"); //ÌáÈ¡·ÖÄ¸
-                    int deno0 = atoi(token);   //´¢´æ·ÖÄ¸
+                    token = strtok(NULL, "/"); //æå–åˆ†æ¯
+                    int deno0 = atoi(token);   //å‚¨å­˜åˆ†æ¯
 
-                    fraction.push_back(Fraction(numer0, deno0)); //Ìí¼Óµ½Êı×éÒÔ·½±ãÔËËã
+                    fraction.push_back(Fraction(numer0, deno0)); //æ·»åŠ åˆ°æ•°ç»„ä»¥æ–¹ä¾¿è¿ç®—
                 }
 
-                sortFraction(fraction, judge1); //°´ÕÕjudge1µÄ²¼¶ûÖµÈ·¶¨´Ó´óµ½Ğ¡»òÕß´ÓĞ¡µ½´ó½øĞĞÊä³ö
+                sortFraction(fraction, judge1); //æŒ‰ç…§judge1çš„å¸ƒå°”å€¼ç¡®å®šä»å¤§åˆ°å°æˆ–è€…ä»å°åˆ°å¤§è¿›è¡Œè¾“å‡º
 
-                cout << "ÅÅĞò½á¹ûÎª:" << endl;
+                cout << "æ’åºç»“æœä¸º:" << endl;
                 for (int i = 0; i < fraction.size(); i++)
-                    cout << fraction[i] << ' '; //ÅÅÁĞÍê³Éºó½øĞĞÊä³ö
+                    cout << fraction[i] << ' '; //æ’åˆ—å®Œæˆåè¿›è¡Œè¾“å‡º
                 cout << endl;
             }
 
-        if (choice == "3") //·ÖÊıÔ¼·Ö
+        if (choice == "3") //åˆ†æ•°çº¦åˆ†
             while (1)
             {
                 judge = 1;
-                printf("ÇëÊäÈëÏëÒª½øĞĞÔ¼·ÖµÄ·ÖÊ½£º(ÊäÈë#·µ»ØÉÏ²ãÄ¿Â¼)\n¡ª¡ª");
+                printf("è¯·è¾“å…¥æƒ³è¦è¿›è¡Œçº¦åˆ†çš„åˆ†å¼ï¼š(è¾“å…¥#è¿”å›ä¸Šå±‚ç›®å½•)\nâ€”â€”");
 
                 char equation[20];
-                cin >> equation; //ÊäÈëÅÅĞòÊ½
+                cin >> equation; //è¾“å…¥æ’åºå¼
 
                 if (equation[0] == '#')
-                    break; //ÊäÈë££·µ»ØÉÏ²ãÄ¿Â¼
+                    break; //è¾“å…¥ï¼ƒè¿”å›ä¸Šå±‚ç›®å½•
 
-                if (!regex_match((string)equation, r1)) //¼ìÑé·ÖÊıÊ½ÊÇ·ñ·ûºÏ¹æÔò
+                if (!regex_match((string)equation, r1)) //æ£€éªŒåˆ†æ•°å¼æ˜¯å¦ç¬¦åˆè§„åˆ™
                 {
-                    cout << "·ÖÊıËãÊ½ÊäÈë´íÎó£¡" << endl;
+                    cout << "åˆ†æ•°ç®—å¼è¾“å…¥é”™è¯¯ï¼" << endl;
                     break;
                 }
-                //ÏÂÃæÒÀ¾ÉÊÇ½«ÊäÈëµÄ·ÖÊ½×ª³ÉÀàµÄĞÎÊ½
+                //ä¸‹é¢ä¾æ—§æ˜¯å°†è¾“å…¥çš„åˆ†å¼è½¬æˆç±»çš„å½¢å¼
 
                 char *token;
-                token = strtok(equation, "/"); //ÌáÈ¡·Ö×Ó
+                token = strtok(equation, "/"); //æå–åˆ†å­
                 char *token1;
-                token1 = strtok(NULL, "/"); //ÌáÈ¡·ÖÄ¸
+                token1 = strtok(NULL, "/"); //æå–åˆ†æ¯
 
                 Fraction A(atoi(token), atoi(token1));
-                Fraction A1(A); //¸´ÖÆÒ»¸öA£¬¼ì²âÄÜ·ñÔ¼·Ö
+                Fraction A1(A); //å¤åˆ¶ä¸€ä¸ªAï¼Œæ£€æµ‹èƒ½å¦çº¦åˆ†
 
-                A.RdcFrc(); //µ÷ÓÃÔ¼·Öº¯Êı
+                A.RdcFrc(); //è°ƒç”¨çº¦åˆ†å‡½æ•°
 
                 if (A1 == A)
-                    cout << "¸Ã·ÖÊıÎŞ·¨Ô¼·Ö£¡" << endl;
+                    cout << "è¯¥åˆ†æ•°æ— æ³•çº¦åˆ†ï¼" << endl;
                 else
-                    cout << "Ô¼·Ö½á¹ûÎª£º" << endl
+                    cout << "çº¦åˆ†ç»“æœä¸ºï¼š" << endl
                          << A << endl;
             }
 
         if (judge == 0)
-            cout << "ÊäÈë´íÎó£¡" << endl;
-    } //´ó¹¦¸æ³É,Ğ»Ğ»ÀÏÊ¦£¡£¨£ş¨Œ£ş£©
-} // cqu 20221006
+            cout << "è¾“å…¥é”™è¯¯ï¼" << endl;
+    } //å¤§åŠŸå‘Šæˆ,è°¢è°¢è€å¸ˆï¼ï¼ˆï¿£â–½ï¿£ï¼‰
+} // cqu 2022xxxx
